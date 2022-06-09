@@ -20,7 +20,8 @@ def result(request):
     WindSpeed = request.POST['WS']
     y_pred = cls.predict([[Places,Year,Month,Tmax,Tmin,Rh,WindSpeed]])
     final = str(y_pred).replace('[','').replace(']','')
+
     #  print(y_pred)
 
-    return render(request,"result.html",{'result':final,'max':Tmax,'min':Tmin,'rh':Rh,'speed':WindSpeed})
+    return render(request,"result.html",{'result':final,'max':Tmax,'min':Tmin,'rh':Rh,'speed':WindSpeed,'location':Places,'year':Year})
     

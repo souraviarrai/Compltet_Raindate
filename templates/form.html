@@ -1,137 +1,106 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="sourav">
-    <meta name="author" content="sourav">
-    <meta name="keywords" content="sourav">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Raindate Form</title>
 
-    <!-- Title Page-->
-    <title>MRPF</title>
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fontss1/material-icon/css/material-design-iconic-font.min.css' %}">
 
-    <!-- Icons font CSS-->
-    <link href=" {% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %} " rel="stylesheet" media="all">
-    <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'csss1/style.css' %}">
+    <!-- Latest compiled and minified CSS -->
 
-    <!-- Vendor CSS-->
-    <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
 </head>
-
 <body>
-    
-    
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w680">
-            <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Registration Form</h2>
-                    <form action="{% url 'result' %}" method="POST">
-                        {% csrf_token %}
-                         <div class="input-group">
-                            <label class="label">Dzongkhag</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="DZ" type="number">
-                                    <option disabled="disabled" selected="selected">Choose Dzongkhag</option>
-                                    <option value="5">Paro</option>
-                                    <option value="6">Pemagatshel</option>
-                                    <option value="7">Punakha</option>
-                                    <option value="9">Simthokha</option>
-                                    <option value="0">Chamkhar</option>
-                                    <option value="1">Deothang</option>
-                                    <option value="2">Haa</option>
-                                    <option value="3">Kanglung</option>
-                                    <option value="4">Mongar</option>
-                                    <option value="8">Tashiyangtse</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div> 
-                        {% comment %} <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Dzongkhag</label>
-                                    <input class="input--style-4" type="number" name="DZ">
-                                </div>
-                            </div>
-                            
-                        </div> {% endcomment %}
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">T-max</label>
-                                    <input class="input--style-4" type="number" name="TM" step="any" placeholder="In °C">
-                                </div>
-                            </div>
-                             <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">T-min</label>
-                                    <input class="input--style-4" type="number" required name="TI" step="any" placeholder="In °C">
-                                </div>
-                            </div> 
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">RH</label>
-                                    <input class="input--style-4" type="number" name="RH" step="any" placeholder="in %" >
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Wind Speed</label>
-                                    <input class="input--style-4" type="number" name="WS" step="any" placeholder="in m/s">
-                                </div>
-                            </div>
-                             </div>
-                             
-                            <div class="row row-space">
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">Month</label>
-                                        <input class="input--style-4" type="number" name="M">
-                                    </div>
-                                </div>
-                                <div class="col-2">
-                                    <div class="input-group">
-                                        <label class="label">Year</label>
-                                        <input class="input--style-4" type="number" name="Y" >
-                                    </div>
-                                </div>
-                            </div>
-                             
-                     
-                     
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                        </div>
-                    </form>
+  <style>
+    .button {
+      background-color: #FB9263;
+      border: none;
+      border-radius:8px;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
+  
+
+    <div class="main">
+
+        <div class="container">
+            <form method="POST" class="appointment-form" id="appointment-form" action="{% url 'result' %}">
+              {% csrf_token %}
+                <h2>enter the data for prediction</h2>
+                <div class="form-group-1">
+                    <input type="number" step="any" name="TM" id="title" placeholder="Maximum Temprature in C°" required />
+                    <input type="number" step="any" name="TI" id="title" placeholder="Minimum Temprature in C°" required />
+                    <input type="number" step="any" name="RH" id="title" placeholder="Relative Humidity in %" required />
+                    <input type="number" step="any" name="WS" id="title" placeholder="Windspeed in m/s" required />
+
                 </div>
-            </div>
+                <div class="form-group-2">
+                    <h3>Enter Location And Date</h3>
+
+                    <div class="form-group-1">
+                      <select name="M" id="month">
+                        <option value="Month" disabled selected>Choose Month</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                      </select>
+                      <input type="number"  name="Y" id="title" placeholder="Year in number, eg - (2003,2009,2023)" required />
+
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-holder form-holder-2">
+                        <select name="DZ" id="position">
+                          <option value="Position" disabled selected>Choose Dzongkhag</option>
+                            <option value="paro">Paro</option>
+                            <option value="pemagatshel">Pemagatshel</option>
+                            <option value="punakha">Punakha</option>
+                            <option value="simkotha">Simthokha</option>
+                            <option value="chamkhar">Chamkhar</option>
+                            <option value="deothang">Deothang</option>
+                            <option value="haa">Haa</option>
+                            <option value="kanglung">Kanglung</option>
+                            <option value="mongar">Mongar</option>
+                            <option value="tashiyangtse">Tashiyangtse</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="form-submit">
+                    <input type="submit" name="submit" id="submit" class="submit" value="Predict" />
+                    <a class="button" href="{% url 'index' %}"> < back</a>
+                    
+                </div>
+            </form>
         </div>
+
     </div>
 
-
-    <!-- Jquery JS-->
-    <script src=" {% static 'vendor/jquery/jquery.min.js' %} "></script>
-    <!-- Vendor JS-->
-    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-    <script src="{% static 'vendor/datepicker/moment.min.js' %}"></script>
-    <script src="{% static 'vendor/datepicker/daterangepicker.js' %}"></script>
-
-    <!-- Main JS-->
-    <script src="{% static 'js/global.js' %}"></script>
-
+    <!-- JS -->
+    <script src="{% static 'vendors1/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'jss1/main.js' %}"></script>
+   
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
 </html>
-<!-- end document-->
