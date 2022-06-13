@@ -18,7 +18,7 @@
 <body>
   <style>
     .button {
-      background-color: #FB9263;
+      background-color: #FA8128;
       border: none;
       border-radius:8px;
       color: white;
@@ -50,8 +50,8 @@
                     <h3>Enter Location And Date</h3>
 
                     <div class="form-group-1">
-                      <select name="M" id="month">
-                        <option value="Month" disabled selected>Choose Month</option>
+                      <select name="M" id="month" required>
+                        <option value="Month" disabled selected >Choose Month</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
                         <option value="3">March</option>
@@ -71,8 +71,8 @@
 
                     <div class="form-row">
                       <div class="form-holder form-holder-2">
-                        <select name="DZ" id="position">
-                          <option value="Position" disabled selected>Choose Dzongkhag</option>
+                        <select name="DZ" id="position" >
+                          <option value="Position" disabled selected required >Choose Dzongkhag</option>
                             <option value="paro">Paro</option>
                             <option value="pemagatshel">Pemagatshel</option>
                             <option value="punakha">Punakha</option>
@@ -89,7 +89,8 @@
                 </div>
 
                 <div class="form-submit">
-                    <input type="submit" name="submit" id="submit" class="submit" value="Predict" />
+                    
+                    <input type="submit" name="submit" id="submit" class="submit" value="Predict >" />
                     <a class="button" href="{% url 'index' %}"> < back</a>
                     
                 </div>

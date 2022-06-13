@@ -10,7 +10,7 @@ def index(request):
 def form(request):
     return render(request,'form.html')
 def result(request):
-    cls = joblib.load('modelsvr.joblib')
+    cls = joblib.load('model.joblib')
     Places = request.POST['DZ']
     Year = request.POST['Y']
     Month = request.POST['M']
