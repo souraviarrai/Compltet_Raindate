@@ -1,3 +1,4 @@
+from decimal import FloatOperation
 from django.shortcuts import render
 from django.http import HttpResponse
 import joblib
@@ -10,7 +11,7 @@ def index(request):
 def form(request):
     return render(request,'form.html')
 def result(request):
-    cls = joblib.load('model.joblib')
+    cls = joblib.load('modelsvr.joblib')
     Places = request.POST['DZ']
     Year = request.POST['Y']
     Month = request.POST['M']
@@ -20,8 +21,10 @@ def result(request):
     WindSpeed = request.POST['WS']
     y_pred = cls.predict([[Places,Year,Month,Tmax,Tmin,Rh,WindSpeed]])
     final = str(y_pred).replace('[','').replace(']','')
+    p=float(final)
+    positive = abs(p) 
 
     #  print(y_pred)
 
-    return render(request,"result.html",{'result':final,'max':Tmax,'min':Tmin,'rh':Rh,'speed':WindSpeed,'location':Places,'year':Year})
+    return render(request,"result.html",{'result':positive,'max':Tmax,'min':Tmin,'rh':Rh,'speed':WindSpeed,'location':Places,'year':Year})
     
